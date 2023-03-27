@@ -4,17 +4,20 @@ import { useQuery } from "react-query";
 import { FaDiceFive } from "react-icons/fa";
 
 function Quotes() {
-	const { data, isLoading, isError } = useQuery({
+	const { data, isLoading, isError, refetch } = useQuery({
 		queryKey: ["quote"],
 		queryFn: getAdvice,
+		refetchOnWindowFocus: false,
 	});
 
 	if (isLoading) {
-		return <div className="text-LightCyan">Loading...</div>;
+		return (
+			<div className="text-LightCyan max-w-lg mx-auto">Loading...</div>
+		);
 	}
 
 	if (isError) {
-		return <div className="text-LightCyan">Error 404</div>;
+		return <div className="text-LightCyan max-w-lg mx-auto">Error 404</div>;
 	}
 
 	return (
@@ -33,7 +36,10 @@ function Quotes() {
 				</div>
 				<div className="w-full h-[0.5px] opacity-30 bg-LightCyan"></div>
 			</div>
-			<div className="absolute -translate-x-[50%] -bottom-[35px] left-[50%] p-3 rounded-full bg-NeonGreen">
+			<div
+				className="absolute -translate-x-[50%] -bottom-[35px] left-[50%] p-3 rounded-full bg-NeonGreen hover:shadow-neonShadow cursor-pointer ease-linear duration-300"
+				onClick={refetch}
+			>
 				<FaDiceFive size={26} className="text-BlueDark" />
 			</div>
 		</div>

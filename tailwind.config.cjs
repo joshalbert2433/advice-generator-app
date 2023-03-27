@@ -16,6 +16,9 @@ module.exports = {
 			fontFamily: {
 				Manrope: "Manrope', sans-serif",
 			},
+			boxShadow: {
+				neonShadow: "0px 0px 40px -5px hsl(150, 100%, 66%)",
+			},
 		},
 	},
 	plugins: [],
